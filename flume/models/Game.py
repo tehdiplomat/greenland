@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib import admin
-#from django.contrib.auth.models import User
+from flume.models import Player
 
-
-class Card(models.Model):
+class Game(models.Model):
 	name = models.CharField(max_length=50, unique=True)
-	generates = models.IntegerField(default=0) # 1 - Raw, 2 - Tech, 4 - Fuel, 8 - Workforce, 16 - Mineral, 32 -  Liquid
-	# ability
+	greenland = models.ForeignKey(Player)
+	denmark = models.ForeignKey(Player)
+
+	age = models.IntegerField(default=1)
+	#library
+	#discard
 
 	def __unicode__(self):
 		return self.name
